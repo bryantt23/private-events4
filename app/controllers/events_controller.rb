@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @event = current_user.events.build
   end
@@ -16,6 +18,8 @@ class EventsController < ApplicationController
 
   def show
     @event=Event.find(params[:id])
+    @creator = @event.creator
+
   end
 
   def index
