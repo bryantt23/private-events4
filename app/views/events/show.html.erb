@@ -2,3 +2,11 @@
 <h2> <%= @event.name %> </h2>
 
 <h2> <%= @creator.email %> </h2>
+
+<h2> Attendees </h2>
+
+<% @attendees.each do |attendee| %>
+
+<p><%= @event.name %> has <%= attendee.email %> attending </p>
+
+<% end %>

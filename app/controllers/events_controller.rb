@@ -20,6 +20,10 @@ class EventsController < ApplicationController
     @event=Event.find(params[:id])
     @creator = @event.creator
 
+    # let's try this
+    @attendees = @event.attendees
+      # @events = @user.events
+
   end
 
   def index
@@ -30,6 +34,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :date)
+    # params.require(:event).permit(:name, :date, :attendee)
   end
 
 end
