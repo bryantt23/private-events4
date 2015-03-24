@@ -6,11 +6,16 @@ class Event < ActiveRecord::Base
   	has_many   :attendees,   through:        :invites
 
 
-    	def self.upcoming
-    		Event.where('date >= ?', DateTime.now)
-    	end
+    	# def self.upcoming
+    	# 	Event.where('date >= ?', DateTime.now)
+    	# end
+      #
+    	# def self.past
+    	# 	Event.where('date < ?', DateTime.now)
+    	# end
 
-    	def self.past
-    		Event.where('date < ?', DateTime.now)
-    	end
+	scope			 :upcoming, -> { where('date >= ?', DateTime.now).order('Date ASC') }
+	scope      :past,     -> { where('date < ?', DateTime.now).order('Date DESC') }
+
+
 end
