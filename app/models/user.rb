@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   	has_many :attended_events, through:        :invites
 
 
+
 end
