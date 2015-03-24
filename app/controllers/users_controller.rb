@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     @user=current_user
     # @events = Event.(current_user).order("created_at DESC")
 
-  @events = @user.events
+  @created_events = @user.created_events
+    @attended_events = @user.attended_events
   end
 
 
