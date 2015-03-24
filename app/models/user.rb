@@ -10,21 +10,17 @@ class User < ActiveRecord::Base
   	has_many :attended_events, through:        :invites
 
 
+    	# def upcoming_events
+    	# 	self.attended_events.where('date >= ?', DateTime.now)
+    	# end
+      #
+    	# def previous_events
+    	# 	self.attended_events.where('date < ?', DateTime.now)
+    	# end
 
-        	# def self.upcoming
-        	# 	Event.where('date >= ?', DateTime.now)
-        	# end
-          #
-        	# def self.past
-        	# 	Event.where('date < ?', DateTime.now)
-        	# end
+
+      scope			 :upcoming, -> { where('date >= ?', DateTime.now).order('Date ASC') }
+      scope      :past,     -> { where('date < ?', DateTime.now).order('Date DESC') }
 
 
-    	def upcoming_events
-    		self.attended_events.where('date >= ?', DateTime.now)
-    	end
-
-    	def previous_events
-    		self.attended_events.where('date < ?', DateTime.now)
-    	end
 end
