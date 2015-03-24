@@ -11,4 +11,20 @@ class User < ActiveRecord::Base
 
 
 
+        	# def self.upcoming
+        	# 	Event.where('date >= ?', DateTime.now)
+        	# end
+          #
+        	# def self.past
+        	# 	Event.where('date < ?', DateTime.now)
+        	# end
+
+
+    	def upcoming_events
+    		self.attended_events.where('date >= ?', DateTime.now)
+    	end
+
+    	def previous_events
+    		self.attended_events.where('date < ?', DateTime.now)
+    	end
 end
