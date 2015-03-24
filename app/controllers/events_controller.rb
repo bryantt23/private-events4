@@ -21,7 +21,8 @@ class EventsController < ApplicationController
     @creator = @event.creator
 
     # let's try this
-    @attendees = @event.attendees
+    # @attendees = @event.attendee
+		@attendees = @event.attendees.all
       # @events = @user.events
 
   end
